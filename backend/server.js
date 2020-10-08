@@ -6,7 +6,7 @@ import colors from 'colors'
 dotenv.config()
 connectDB()
 
-// Instantiate express
+// Initiate express
 const app = express();
 //Include file extentions at the end of a file you import using es6 modules on the backend
 import products from './data/products.js'
