@@ -15,7 +15,7 @@ const ProductScreen = ({ match }) => {
 
         }
         fetchSingleProduct()
-    }, [])
+    }, [match])
 
     // Check if you get the product
     console.log(product)
