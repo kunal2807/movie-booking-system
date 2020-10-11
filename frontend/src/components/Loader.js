@@ -1,6 +1,7 @@
 import React from 'react';
 import { Spinner } from 'react-bootstrap';
 
+// This shows once we are trying to fetch products
 const Loader = () => {
     return (
         <Spinner animation="border" roler="status" style={{
