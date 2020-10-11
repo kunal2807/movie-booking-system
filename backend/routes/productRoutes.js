@@ -10,7 +10,7 @@ router.get('/', asyncHandler(async (req, res) => {
     res.json(products)
 }))
 
-// Fetch a specific product @ACCESS: PUBLIC!
+// Fetch a specific product @ACCESS: PUBLIC
 router.get('/:id', asyncHandler(async (req, res) => {
     const product = await Product.findById(req.params.id)
     if (product) {
