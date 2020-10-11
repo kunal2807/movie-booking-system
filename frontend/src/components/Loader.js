@@ -3,9 +3,14 @@ import { Spinner } from 'react-bootstrap';
 
 const Loader = () => {
     return (
-        <div>
+        <Spinner animation="border" roler="status" style={{
+            width: '100px',
+            height: '100px',
+            margin: 'auto', disply: "block"
+        }}
+        >
 
-        </div>
+        </Spinner>
     );
 };
 
