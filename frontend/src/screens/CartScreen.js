@@ -8,7 +8,7 @@ import { Col, Row, ListGroup, Image, Button, Form, Card } from 'react-bootstrap'
 const CartScreen = ({ match, location, history }) => {
     return (
         <div>
-
+            {'Stuff goes here'}
         </div>
     );
 };
