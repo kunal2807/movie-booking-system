@@ -22,7 +22,7 @@ const CartScreen = ({ match, location, history }) => {
 
     return (
         <div>
-            {'Stuff goes here'}
+            {'Stuff goes here!'}
         </div>
     );
 };
