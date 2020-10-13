@@ -21,9 +21,9 @@ const CartScreen = ({ match, location, history }) => {
     }, [dispatch, productId, qty])
 
     return (
-        <div>
-            {'Stuff goes here!'}
-        </div>
+        <Row>
+
+        </Row>
     );
 };
 
