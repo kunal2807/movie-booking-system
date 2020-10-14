@@ -4,6 +4,8 @@ import dotenv from 'dotenv'
 import connectDB from './config/db.js'
 import colors from 'colors'
 import productRoutes from './routes/productRoutes.js'
+import userRoutes from './routes/userRoutes.js'
+
 import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 
 dotenv.config()
@@ -11,7 +13,7 @@ connectDB()
 
 // Initiate express
 const app = express();
-
+app.use(express.json())
 app.get('/', (req, res, next) => {
     console.log(req.originalUrl)
     next()
@@ -23,6 +25,8 @@ app.get('/', (req, res) => {
 
 // All product routes will be used on this endpoint
 app.use('/api/products', productRoutes)
+app.use('/api/users', userRoutes)
+
 // Use your middleware that you imported
 app.use(notFound)
 app.use(errorHandler)
