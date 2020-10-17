@@ -1,4 +1,4 @@
-//This file is where you connect all your reducers & stuff like that
+//This file is where you connect all your reducers & stuff like that. Batman
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
