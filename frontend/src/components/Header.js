@@ -12,7 +12,7 @@ const Header = () => {
     const logoutHandler = () => {
         dispatch(logout())
     }
-
+    //No use effect
     return (
         <header>
             <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
