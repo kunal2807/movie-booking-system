@@ -19,11 +19,12 @@ const LoginScreen = ({ location, history }) => {
 
     console.log(userLogin)
 
-    // useEffect(() => {
-    //     if (userInfo) {
-    //         history.push(redirect)
-    //     }
-    // }, [history, userInfo, redirect])
+    // THIS USEEFFECT IS BROKEN
+    useEffect(() => {
+        if (userInfo) {
+            history.push(redirect)
+        }
+    }, [history, userInfo, redirect])
 
     const submitHandler = (e) => {
         e.preventDefault()
