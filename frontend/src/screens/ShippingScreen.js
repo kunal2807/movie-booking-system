@@ -6,6 +6,8 @@ import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
 
 const ShippingScreen = ({ history }) => {
+    const cart = useSelector(state => state.cart)
+
     const [address, setAddress] = useState('')
     const [city, setCity] = useState('')
     const [postalCode, setPostalCode] = useState('')
