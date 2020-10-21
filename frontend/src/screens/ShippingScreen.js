@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
+import CheckoutSteps from '../components/CheckoutSteps'
 import { saveShippingAddress } from '../actions/cartActions';
 
 const ShippingScreen = ({ history }) => {
@@ -25,6 +26,7 @@ const ShippingScreen = ({ history }) => {
     return (
         <FormContainer>
             <h1> Shipping</h1>
+            <CheckoutSteps step1 step2 />
             <form onSubmit={submitHandler}>
                 <Form.Group controlId='address'>
                     <Form.Label>Adress</Form.Label>
