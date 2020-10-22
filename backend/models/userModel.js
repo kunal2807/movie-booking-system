@@ -1,35 +1,36 @@
 import mongoose from 'mongoose'
 import bcrypt from 'bcryptjs'
 
-const userSchema = mongoose.Schema({
-    name: {
-        type: String,
-        required: true
+const userSchema = mongoose.Schema(
+    {
+        name: {
+            type: String,
+            required: true,
+        },
+        email: {
+            type: String,
+            required: true,
+            unique: true,
+        },
+        password: {
+            type: String,
+            required: true,
+        },
+        isAdmin: {
+            type: Boolean,
+            required: true,
+            default: false,
+        },
     },
-    email: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    password: {
-        type: String,
-        required: true
-    },
-    isAdmin: {
-        type: Boolean,
-        required: true,
-        default: false
+    {
+        timestamps: true,
     }
-
-}, {
-    timestamps: true
-})
+)
 
 userSchema.methods.matchPassword = async function (enteredPassword) {
-    // compare plain text to encrypted password
     return await bcrypt.compare(enteredPassword, this.password)
 }
-// Middleware for new user password
+
 userSchema.pre('save', async function (next) {
     if (!this.isModified('password')) {
         next()
@@ -40,4 +41,5 @@ userSchema.pre('save', async function (next) {
 })
 
 const User = mongoose.model('User', userSchema)
-export default User
+
+export default User;
