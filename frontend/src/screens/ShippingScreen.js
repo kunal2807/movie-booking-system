@@ -60,7 +60,7 @@ const ShippingScreen = ({ history }) => {
                         type='text'
                         placeholder='Enter country'
                         value={country}
-                        onChange={(e) => setAddress(e.target.value)}
+                        onChange={(e) => setCountry(e.target.value)}
                     ></Form.Control>
                 </Form.Group>
                 <Button type="submit" variant='primary'>Continue</Button>
