@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
@@ -26,6 +27,10 @@ const OrderScreen = ({ match }) => {
     }
 
     useEffect(() => {
+        const addPayPalScript = async () => {
+            const { data: clientId } = await axios.get('/api/config/paypal')
+            const script = document.createElement('script')
+        }
         dispatch(getOrderDetails(orderId))
     }, [dispatch, orderId])
 
