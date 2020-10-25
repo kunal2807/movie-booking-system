@@ -14,6 +14,8 @@ const OrderScreen = ({ match }) => {
     const [sdkReady, setSdkReady] = useState(false)
     const orderDetails = useSelector((state) => state.orderDetails)
     const { order, loading, error } = orderDetails
+    const orderPay = useSelector((state) => state.orderPay)
+    const { loading: loadingPay, success: successPay } = orderPay
 
     if (!loading) {
         //   Calculate prices!
@@ -37,9 +39,11 @@ const OrderScreen = ({ match }) => {
                 setSdkReady(true)
             }
             document.body.appendChild(script)
+            if (!order || successPay) {
+                dispatch(getOrderDetails(orderId))
+            }
         }
-        dispatch(getOrderDetails(orderId))
-    }, [dispatch, orderId])
+    }, [dispatch, orderId, successPay, order])
 
     return loading ? (
         <Loader />
