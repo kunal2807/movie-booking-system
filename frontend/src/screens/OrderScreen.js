@@ -15,7 +15,7 @@ const OrderScreen = ({ match }) => {
     const { order, loading, error } = orderDetails
 
     if (!loading) {
-        //   Calculate prices
+        //   Calculate prices!
         const addDecimals = (num) => {
             return (Math.round(num * 100) / 100).toFixed(2)
         }
@@ -27,7 +27,7 @@ const OrderScreen = ({ match }) => {
 
     useEffect(() => {
         dispatch(getOrderDetails(orderId))
-    }, [])
+    }, [dispatch, orderId])
 
     return loading ? (
         <Loader />
