@@ -3,7 +3,7 @@ import { authUser, getUserProfile, registerUser, updateUserProfile, getUsers, de
 import { protect, admin } from '../middleware/authMiddleware.js'
 
 const router = express.Router()
-// Routes and invocation of related actions
+// Routes and invocation of related actions and controllers
 router.route('/').post(registerUser).get(protect, admin, getUsers)
 router.post('/login', authUser)
 router
