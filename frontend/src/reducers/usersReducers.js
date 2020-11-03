@@ -63,7 +63,7 @@ export const userUpdateProfileReducer = (state = {}, action) => {
             return state
     }
 }
-// User list stuff
+// User list stuff!
 export const userListReducer = (state = { users: [] }, action) => {
     switch (action.type) {
         case USER_LIST_REQUEST:
