@@ -1,9 +1,28 @@
 import {
     PRODUCTS_LIST_REQUEST,
     PRODUCTS_LIST_FAIL,
-    PRODUCTS_LIST_SUCCESS, PRODUCTS_DETAILS_REQUEST, PRODUCTS_DETAILS_FAIL, PRODUCTS_DETAILS_SUCCESS
+    PRODUCTS_LIST_SUCCESS, PRODUCTS_DETAILS_REQUEST,
+    PRODUCTS_DETAILS_FAIL,
+    PRODUCTS_DETAILS_SUCCESS,
+    PRODUCTS_DELETE_REQUEST,
+    PRODUCTS_DELETE_SUCCESS,
+    PRODUCTS_DELETE_FAIL,
+    PRODUCTS_CREATE_REQUEST,
+    PRODUCTS_CREATE_SUCCESS,
+    PRODUCTS_CREATE_FAIL,
+    PRODUCTS_UPDATE_REQUEST,
+    PRODUCTS_UPDATE_SUCCESS,
+    PRODUCTS_UPDATE_FAIL,
+    PRODUCTS_CREATE_REVIEW_REQUEST,
+    PRODUCTS_CREATE_REVIEW_SUCCESS,
+    PRODUCTS_CREATE_REVIEW_FAIL,
+    PRODUCTS_TOP_REQUEST,
+    PRODUCTS_TOP_SUCCESS,
+    PRODUCTS_TOP_FAIL
 } from '../constants/productConstants'
 import axios from 'axios';
+import { logout } from './userActions'
+
 // Actions
 export const listProductDetails = (id) => async (dispatch) => {
     try {
@@ -39,6 +58,42 @@ export const list = () => async (dispatch) => {
         dispatch({
             type: PRODUCTS_LIST_FAIL,
             payload: error.response && error.response.data.message ? error.response.data.message : error.message
+        })
+    }
+}
+
+export const deleteProduct = (id) => async (dispatch, getState) => {
+    try {
+        dispatch({
+            type: PRODUCTS_DELETE_REQUEST,
+        })
+
+        const {
+            userLogin: { userInfo },
+        } = getState()
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${userInfo.token}`,
+            },
+        }
+
+        await axios.delete(`/api/products/${id}`, config)
+
+        dispatch({
+            type: PRODUCTS_DELETE_SUCCESS,
+        })
+    } catch (error) {
+        const message =
+            error.response && error.response.data.message
+                ? error.response.data.message
+                : error.message
+        if (message === 'Not authorized, token failed') {
+            dispatch(logout())
+        }
+        dispatch({
+            type: PRODUCTS_DELETE_FAIL,
+            payload: message,
         })
     }
 }
