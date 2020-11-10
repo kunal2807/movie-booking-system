@@ -24,6 +24,30 @@ import axios from 'axios';
 import { logout } from './userActions'
 
 // Actions
+export const listProducts = (keyword = '', pageNumber = '') => async (
+    dispatch
+) => {
+    try {
+        dispatch({ type: PRODUCTS_LIST_REQUEST })
+
+        const { data } = await axios.get(
+            `/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
+        )
+
+        dispatch({
+            type: PRODUCTS_LIST_SUCCESS,
+            payload: data,
+        })
+    } catch (error) {
+        dispatch({
+            type: PRODUCTS_LIST_FAIL,
+            payload:
+                error.response && error.response.data.message
+                    ? error.response.data.message
+                    : error.message,
+        })
+    }
+}
 export const listProductDetails = (id) => async (dispatch) => {
     try {
         dispatch({
