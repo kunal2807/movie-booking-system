@@ -1,4 +1,5 @@
 import express from 'express'
+import path from 'path'
 import dotenv from 'dotenv'
 //Include file extentions at the end of a file you import using es6 modules on the backend
 import connectDB from './config/db.js'
@@ -6,6 +7,7 @@ import colors from 'colors'
 import productRoutes from './routes/productRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import orderRoutes from './routes/orderRoutes.js'
+import uploadRoutes from './routes/uploadRoutes.js'
 import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 
 dotenv.config()
@@ -23,11 +25,15 @@ app.get('/', (req, res) => {
     res.send('API is running...')
 })
 
-// All product  and user routes will be used on this endpoint
+// All product and user routes will be used on these endpoint
 app.use('/api/products', productRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/orders', orderRoutes)
+app.use('/api/upload', uploadRoutes)
+
 app.get('/api/config/paypal', (req, res) => res.send(process.env.PAYPAL_CLIENT_ID))
+const __dirname = path.resolve()
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 // Use your middleware that you imported
 app.use(notFound)
 app.use(errorHandler)
