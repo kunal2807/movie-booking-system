@@ -13,7 +13,7 @@ import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 dotenv.config()
 connectDB()
 
-// Initiate express
+// Initiate express!
 const app = express();
 app.use(express.json())
 app.get('/', (req, res, next) => {
