@@ -112,7 +112,7 @@ const createProductReview = asyncHandler(async (req, res) => {
         }
 
         product.reviews.push(review)
-
+        // update the number of reviews
         product.numReviews = product.reviews.length
 
         product.rating =
