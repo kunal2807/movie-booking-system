@@ -6,13 +6,26 @@ import { useDispatch, useSelector } from 'react-redux';
 import { listProductDetails } from '../actions/productActions';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
+import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
 
 const ProductScreen = ({ match, history }) => {
     const [qty, setQty] = useState(1)
+    const [rating, setRating] = useState(0)
+    const [comment, setComment] = useState('')
 
     const dispatch = useDispatch()
     const productDetails = useSelector(state => state.productDetails)
     const { loading, error, product } = productDetails
+
+    const userLogin = useSelector((state) => state.userLogin)
+    const { userInfo } = userLogin
+    // Ass
+    const productReviewCreate = useSelector((state) => state.productReviewCreate)
+    const {
+        success: successProductReview,
+        loading: loadingProductReview,
+        error: errorProductReview,
+    } = productReviewCreate
 
     useEffect(() => {
         dispatch(listProductDetails(match.params.id))
