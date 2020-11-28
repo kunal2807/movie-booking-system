@@ -19,7 +19,7 @@ const ProductScreen = ({ match, history }) => {
 
     const userLogin = useSelector((state) => state.userLogin)
     const { userInfo } = userLogin
-    // Ass
+
     const productReviewCreate = useSelector((state) => state.productReviewCreate)
     const {
         success: successProductReview,
