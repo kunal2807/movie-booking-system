@@ -23,7 +23,7 @@ import {
 import axios from 'axios';
 import { logout } from './userActions'
 
-// Actions!
+// Actions are here
 export const listProducts = (keyword = '', pageNumber = '') => async (
     dispatch
 ) => {
