@@ -23,7 +23,7 @@ import {
 import axios from 'axios';
 import { logout } from './userActions'
 
-// Actions are here
+// Actions are here. Fake
 export const listProducts = (keyword = '', pageNumber = '') => async (
     dispatch
 ) => {
