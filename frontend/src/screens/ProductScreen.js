@@ -5,12 +5,12 @@ import { Row, Col, Image, ListGroup, Card, Button, Form } from 'react-bootstrap'
 import Rating from '../components/Rating'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
-import Meta from '../components/Meta'
+// import Meta from '../components/Meta'
 import {
     listProductDetails,
     createProductReview,
 } from '../actions/productActions'
-import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
+import { PRODUCTS_CREATE_REVIEW_RESET } from '../constants/productConstants'
 
 const ProductScreen = ({ history, match }) => {
     const [qty, setQty] = useState(1)
@@ -39,7 +39,7 @@ const ProductScreen = ({ history, match }) => {
         }
         if (!product._id || product._id !== match.params.id) {
             dispatch(listProductDetails(match.params.id))
-            dispatch({ type: PRODUCT_CREATE_REVIEW_RESET })
+            dispatch({ type: PRODUCTS_CREATE_REVIEW_RESET })
         }
     }, [dispatch, match, successProductReview])
 
@@ -68,7 +68,7 @@ const ProductScreen = ({ history, match }) => {
                 <Message variant='danger'>{error}</Message>
             ) : (
                         <>
-                            <Meta title={product.name} />
+                            {/* <Meta title={product.name} /> */}
                             <Row>
                                 <Col md={6}>
                                     <Image src={product.image} alt={product.name} fluid />
