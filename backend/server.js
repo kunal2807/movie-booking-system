@@ -26,7 +26,7 @@ app.get('/', (req, res, next) => {
 })
 
 
-// All product and user routes will be used on these endpoints
+// All product and user routes will be used on these endpoints Ass
 app.use('/api/products', productRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/orders', orderRoutes)
