@@ -1,18 +1,21 @@
-import React from 'react';
-import { Spinner } from 'react-bootstrap';
+import React from 'react'
+import { Spinner } from 'react-bootstrap'
 
-// This shows once we are trying to fetch products
 const Loader = () => {
-    return (
-        <Spinner animation="border" roler="status" style={{
-            width: '100px',
-            height: '100px',
-            margin: 'auto', disply: "block"
-        }}
-        >
+  return (
+    <Spinner
+      animation='border'
+      role='status'
+      style={{
+        width: '100px',
+        height: '100px',
+        margin: 'auto',
+        display: 'block',
+      }}
+    >
+      <span className='sr-only'>Loading...</span>
+    </Spinner>
+  )
+}
 
-        </Spinner>
-    );
-};
-
-export default Loader;
+export default Loader
