@@ -5,7 +5,7 @@ import {
 } from '../constants/productConstants'
 
 
-// Takes in the initial state and the action that determines how state should update
+// Takes in the initial state and the action that determines how state should update ASS
 export const productListReducer = (initialState = { products: [] }, action) => {
     switch (action.type) {
         case PRODUCTS_LIST_REQUEST:
