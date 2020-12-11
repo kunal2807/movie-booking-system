@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
-
+// Add name
 const Footer = () => {
   return (
     <footer>
