@@ -21,7 +21,7 @@ const Header = () => {
       <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
         <Container>
           <LinkContainer to='/'>
-            <Navbar.Brand>ProShop</Navbar.Brand>
+            <Navbar.Brand>MOVIE TIME</Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
@@ -29,7 +29,7 @@ const Header = () => {
             <Nav className='ml-auto'>
               <LinkContainer to='/cart'>
                 <Nav.Link>
-                  <i className='fas fa-shopping-cart'></i> Cart
+                  <i class='fa fa-film' aria-hidden='true'></i> your movies
                 </Nav.Link>
               </LinkContainer>
               {userInfo ? (

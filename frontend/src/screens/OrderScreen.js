@@ -74,7 +74,7 @@ const OrderScreen = ({ match, history }) => {
         setSdkReady(true)
       }
     }
-  }, [dispatch, orderId, successPay, successDeliver, order])
+  }, [dispatch, orderId, successPay, successDeliver, order, history, userInfo])
 
   const successPaymentHandler = (paymentResult) => {
     console.log(paymentResult)
@@ -96,30 +96,6 @@ const OrderScreen = ({ match, history }) => {
         <Col md={8}>
           <ListGroup variant='flush'>
             <ListGroup.Item>
-              <h2>Shipping</h2>
-              <p>
-                <strong>Name: </strong> {order.user.name}
-              </p>
-              <p>
-                <strong>Email: </strong>{' '}
-                <a href={`mailto:${order.user.email}`}>{order.user.email}</a>
-              </p>
-              <p>
-                <strong>Address:</strong>
-                {order.shippingAddress.address}, {order.shippingAddress.city}{' '}
-                {order.shippingAddress.postalCode},{' '}
-                {order.shippingAddress.country}
-              </p>
-              {order.isDelivered ? (
-                <Message variant='success'>
-                  Delivered on {order.deliveredAt}
-                </Message>
-              ) : (
-                <Message variant='danger'>Not Delivered</Message>
-              )}
-            </ListGroup.Item>
-
-            <ListGroup.Item>
               <h2>Payment Method</h2>
               <p>
                 <strong>Method: </strong>
@@ -135,7 +111,7 @@ const OrderScreen = ({ match, history }) => {
             <ListGroup.Item>
               <h2>Order Items</h2>
               {order.orderItems.length === 0 ? (
-                <Message>Order is empty</Message>
+                <Message>No bookings yet</Message>
               ) : (
                 <ListGroup variant='flush'>
                   {order.orderItems.map((item, index) => (
@@ -169,18 +145,12 @@ const OrderScreen = ({ match, history }) => {
           <Card>
             <ListGroup variant='flush'>
               <ListGroup.Item>
-                <h2>Order Summary</h2>
+                <h2>Booking Summary</h2>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Col>Items</Col>
+                  <Col>Total Amount</Col>
                   <Col>${order.itemsPrice}</Col>
-                </Row>
-              </ListGroup.Item>
-              <ListGroup.Item>
-                <Row>
-                  <Col>Shipping</Col>
-                  <Col>${order.shippingPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
@@ -195,7 +165,8 @@ const OrderScreen = ({ match, history }) => {
                   <Col>${order.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
-              {!order.isPaid && (
+
+              {/* {!order.isPaid && (
                 <ListGroup.Item>
                   {loadingPay && <Loader />}
                   {!sdkReady ? (
@@ -207,7 +178,7 @@ const OrderScreen = ({ match, history }) => {
                     />
                   )}
                 </ListGroup.Item>
-              )}
+              )} */}
               {loadingDeliver && <Loader />}
               {userInfo &&
                 userInfo.isAdmin &&

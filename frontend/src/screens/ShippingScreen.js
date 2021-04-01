@@ -9,10 +9,10 @@ const ShippingScreen = ({ history }) => {
   const cart = useSelector((state) => state.cart)
   const { shippingAddress } = cart
 
-  const [address, setAddress] = useState(shippingAddress.address)
-  const [city, setCity] = useState(shippingAddress.city)
-  const [postalCode, setPostalCode] = useState(shippingAddress.postalCode)
-  const [country, setCountry] = useState(shippingAddress.country)
+  const [address, setAddress] = useState(' ')
+  const [city, setCity] = useState(' ')
+  const [postalCode, setPostalCode] = useState(' ')
+  const [country, setCountry] = useState(' ')
 
   const dispatch = useDispatch()
 
@@ -25,9 +25,9 @@ const ShippingScreen = ({ history }) => {
   return (
     <FormContainer>
       <CheckoutSteps step1 step2 />
-      <h1>Shipping</h1>
+      <h1>Choose seats</h1>
       <Form onSubmit={submitHandler}>
-        <Form.Group controlId='address'>
+        {/* <Form.Group controlId='address'>
           <Form.Label>Address</Form.Label>
           <Form.Control
             type='text'
@@ -69,7 +69,7 @@ const ShippingScreen = ({ history }) => {
             required
             onChange={(e) => setCountry(e.target.value)}
           ></Form.Control>
-        </Form.Group>
+        </Form.Group> */}
 
         <Button type='submit' variant='primary'>
           Continue

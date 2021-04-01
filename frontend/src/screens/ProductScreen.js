@@ -41,7 +41,7 @@ const ProductScreen = ({ history, match }) => {
       dispatch(listProductDetails(match.params.id))
       dispatch({ type: PRODUCT_CREATE_REVIEW_RESET })
     }
-  }, [dispatch, match, successProductReview])
+  }, [dispatch, match, successProductReview, product])
 
   const addToCartHandler = () => {
     history.push(`/cart/${match.params.id}?qty=${qty}`)
@@ -104,9 +104,9 @@ const ProductScreen = ({ history, match }) => {
 
                   <ListGroup.Item>
                     <Row>
-                      <Col>Status:</Col>
+                      <Col>Seats:</Col>
                       <Col>
-                        {product.countInStock > 0 ? 'In Stock' : 'Out Of Stock'}
+                        {product.countInStock > 0 ? 'Available' : 'Housefull'}
                       </Col>
                     </Row>
                   </ListGroup.Item>
@@ -114,7 +114,7 @@ const ProductScreen = ({ history, match }) => {
                   {product.countInStock > 0 && (
                     <ListGroup.Item>
                       <Row>
-                        <Col>Qty</Col>
+                        <Col>Number of seats</Col>
                         <Col>
                           <Form.Control
                             as='select'
@@ -141,7 +141,7 @@ const ProductScreen = ({ history, match }) => {
                       type='button'
                       disabled={product.countInStock === 0}
                     >
-                      Add To Cart
+                      Book Now
                     </Button>
                   </ListGroup.Item>
                 </ListGroup>
@@ -162,7 +162,7 @@ const ProductScreen = ({ history, match }) => {
                   </ListGroup.Item>
                 ))}
                 <ListGroup.Item>
-                  <h2>Write a Customer Review</h2>
+                  <h2>Give a review</h2>
                   {successProductReview && (
                     <Message variant='success'>
                       Review submitted successfully
